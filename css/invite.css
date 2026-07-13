@@ -164,6 +164,6 @@ body.invite {
     gap: 1rem;
   }
   .stub-actions {
-    justify-content: space-between;
+    justify-content: flex-end;
   }
 }
