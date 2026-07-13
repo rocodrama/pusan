@@ -29,22 +29,33 @@
     return Number.isFinite(v) ? v : 0;
   }
 
+  // 실제로 눈에 보이는 영역(핀치줌/축소 상태 포함) 기준으로 좌표를 잡는다.
+  // window.innerWidth만 쓰면 페이지가 축소돼 보일 때 그 바깥으로 좌표가 나갈 수 있음.
+  function visibleBox() {
+    const vv = window.visualViewport;
+    if (vv) {
+      return { width: vv.width, height: vv.height, offsetX: vv.offsetLeft, offsetY: vv.offsetTop };
+    }
+    return { width: window.innerWidth, height: window.innerHeight, offsetX: 0, offsetY: 0 };
+  }
+
   function dodge(fromX, fromY) {
     if (locked) return;
     locked = true;
     window.setTimeout(() => (locked = false), COOLDOWN);
     attempts += 1;
 
+    const box = visibleBox();
     const rect = cancelBtn.getBoundingClientRect();
     const margin = 24;
     const safeTop = margin + safeInset('--safe-t');
     const safeBottom = margin + safeInset('--safe-b') + 12;
     const safeLeft = margin + safeInset('--safe-l');
     const safeRight = margin + safeInset('--safe-r');
-    const minX = safeLeft;
-    const minY = safeTop;
-    const maxX = window.innerWidth - rect.width - safeRight;
-    const maxY = window.innerHeight - rect.height - safeBottom;
+    const minX = box.offsetX + safeLeft;
+    const minY = box.offsetY + safeTop;
+    const maxX = box.offsetX + box.width - rect.width - safeRight;
+    const maxY = box.offsetY + box.height - rect.height - safeBottom;
 
     let nextX;
     let nextY;
