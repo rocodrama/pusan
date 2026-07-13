@@ -1,0 +1,258 @@
+/* ==========================================================================
+   일정표 페이지 — PPT 느낌의 세로 슬라이드 (보딩패스 시리즈)
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.itinerary {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.slide {
+  height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.25rem;
+  position: relative;
+}
+
+.slide--dark {
+  --page-bg: var(--sea-deep);
+  background: radial-gradient(1000px 500px at 50% -10%, rgba(20, 107, 140, 0.55), transparent 60%), var(--sea-deep);
+  color: var(--sand);
+}
+
+.slide--light {
+  --page-bg: var(--sand);
+  background: var(--sand);
+  color: var(--ink);
+}
+
+.slide__inner {
+  width: min(640px, 100%);
+}
+
+.slide__eyebrow {
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.slide__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2rem, 7vw, 3.1rem);
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+.slide__sub {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  opacity: 0.7;
+  margin: 0 0 2rem;
+}
+
+/* ---- leg (transport ticket stub) ---- */
+
+.leg {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 1rem 0;
+  border-bottom: 1px dashed rgba(27, 36, 48, 0.15);
+}
+
+.slide--dark .leg {
+  border-bottom-color: rgba(253, 246, 234, 0.18);
+}
+
+.leg:last-child {
+  border-bottom: none;
+}
+
+.leg__time {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  min-width: 4.6rem;
+  opacity: 0.75;
+}
+
+.leg__route {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.leg__mode {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 0.25rem 0.55rem;
+  border-radius: 999px;
+  border: 1px solid currentColor;
+  opacity: 0.7;
+  white-space: nowrap;
+}
+
+.leg--main .leg__route {
+  color: var(--gold);
+}
+
+.leg--main .leg__mode {
+  color: var(--gold);
+  border-color: var(--gold);
+  opacity: 1;
+}
+
+/* ---- feature card (day 2 sky capsule) ---- */
+
+.feature {
+  border-radius: var(--radius);
+  background: rgba(253, 246, 234, 0.06);
+  border: 1px solid rgba(253, 246, 234, 0.16);
+  padding: 1.6rem;
+  margin-bottom: 1.6rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.feature__badge {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+}
+
+.feature__name {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.feature__note {
+  margin: 0;
+  font-size: 0.9rem;
+  opacity: 0.75;
+  line-height: 1.6;
+}
+
+.capsule-track {
+  position: relative;
+  height: 64px;
+  margin: 0.4rem 0 0.2rem;
+}
+
+.capsule-track svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.free-list {
+  margin: 0;
+  padding-left: 1.1rem;
+  font-size: 0.92rem;
+  line-height: 1.9;
+  opacity: 0.85;
+}
+
+/* ---- stay card ---- */
+
+.stay-card {
+  display: grid;
+  gap: 1.1rem;
+  padding: 1.8rem;
+  border-radius: var(--radius);
+  background: var(--sand);
+  color: var(--ink);
+}
+
+.stay-card__row {
+  display: grid;
+  grid-template-columns: 5.2rem 1fr;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.stay-card__row span {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.5;
+  padding-top: 0.15rem;
+}
+
+.stay-card__row strong {
+  font-weight: 600;
+}
+
+.stay-card a.map-link {
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  text-decoration: underline;
+  color: var(--sea-mid);
+}
+
+/* ---- nav dots ---- */
+
+.dots {
+  position: fixed;
+  right: 1.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: grid;
+  gap: 0.6rem;
+  z-index: 20;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.35);
+  padding: 0;
+  cursor: pointer;
+}
+
+.dot.active {
+  background: var(--gold);
+  transform: scale(1.3);
+}
+
+.back-link {
+  position: fixed;
+  left: 1.2rem;
+  top: 1.2rem;
+  z-index: 20;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--sand);
+  opacity: 0.6;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  opacity: 1;
+}
+
+@media (max-width: 560px) {
+  .leg {
+    grid-template-columns: auto 1fr;
+  }
+  .leg__mode {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+  .dots {
+    right: 0.6rem;
+  }
+}

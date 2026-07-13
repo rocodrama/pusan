@@ -1,0 +1,156 @@
+/* ==========================================================================
+   부산 초대장 — shared design tokens & base components
+   Motif: boarding pass / train ticket (매칭: SRT 이동이 여정의 중심이라서)
+   ========================================================================== */
+
+@import url('https://cdn.jsdelivr.net/gh/fonts-archive/Cafe24Ssurround/Cafe24Ssurround.css');
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* color */
+  --sea-deep: #0b3d5c;
+  --sea-mid: #146b8c;
+  --coral: #ff6f52;
+  --sand: #fdf6ea;
+  --gold: #ffb648;
+  --ink: #1b2430;
+
+  /* type */
+  --font-display: 'Cafe24Ssurround', 'Pretendard', sans-serif;
+  --font-body: 'Pretendard', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+
+  --radius: 22px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--sea-deep);
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+/* ---------- ticket / boarding-pass component ---------- */
+
+.ticket {
+  --notch-bg: var(--sea-deep);
+  position: relative;
+  background: var(--sand);
+  border-radius: var(--radius);
+  box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.45);
+}
+
+.ticket::before,
+.ticket::after {
+  content: '';
+  position: absolute;
+  width: 34px;
+  height: 34px;
+  background: var(--notch-bg);
+  border-radius: 50%;
+  top: var(--notch-top, 50%);
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.ticket::before {
+  left: -17px;
+}
+
+.ticket::after {
+  right: -17px;
+}
+
+.ticket__tear {
+  border-left: 3px dashed rgba(27, 36, 48, 0.25);
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: var(--coral);
+  font-weight: 600;
+}
+
+.barcode {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 28px;
+}
+
+.barcode span {
+  display: block;
+  width: 3px;
+  background: var(--ink);
+  opacity: 0.55;
+}
+
+.btn {
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  padding: 1rem 2.2rem;
+  font-size: 1.05rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:active {
+  transform: scale(0.96);
+}
+
+.btn--primary {
+  background: var(--coral);
+  color: var(--sand);
+  box-shadow: 0 12px 24px -8px rgba(255, 111, 82, 0.6);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 28px -8px rgba(255, 111, 82, 0.7);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--ink);
+  opacity: 0.45;
+  padding: 0.7rem 1.4rem;
+  font-size: 0.95rem;
+  border: 1.5px solid currentColor;
+}

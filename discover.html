@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>부산 둘러보기</title>
+  <meta name="description" content="좋아요/싫어요로 골라보는 부산 맛집·액티비티" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/discover.css" />
+</head>
+<body class="discover">
+  <div class="top-bar">
+    <h1>둘러보기</h1>
+    <span class="progress" id="progress">0 / 0</span>
+  </div>
+  <p class="disclaimer">가격·정보는 2026.07 조사 기준, 일부는 매장 확인이 필요한 참고값이에요. 카드의 "자세히 보기"에서 최신 확인!</p>
+
+  <div class="deck-wrap">
+    <div class="card-stack" id="cardStack"></div>
+
+    <div class="deck-empty" id="emptyState" style="display:none;">
+      <h2>다 봤어요!</h2>
+      <p><span id="summaryCount">0</span>곳 찜했어요. 모아보기에서 확인해봐요.</p>
+      <a class="btn btn--primary" href="saved.html">모아보기로 가기</a>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button id="undoBtn" class="action-btn action-btn--undo" type="button" aria-label="되돌리기">↺</button>
+    <button id="nopeBtn" class="action-btn action-btn--nope" type="button" aria-label="싫어요">✕</button>
+    <button id="likeBtn" class="action-btn action-btn--like" type="button" aria-label="좋아요">♥</button>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="discover.html" class="active">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="12" height="16" rx="2"/><rect x="9" y="2" width="12" height="16" rx="2" fill="none"/></svg>
+      둘러보기
+    </a>
+    <a href="saved.html" id="savedTab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg>
+      모아보기
+      <span class="tab-badge" id="tabBadge">0</span>
+    </a>
+  </nav>
+
+  <script src="js/places.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/discover.js"></script>
+  <script src="js/nav-badge.js"></script>
+</body>
+</html>

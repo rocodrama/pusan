@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>모아보기 · 부산</title>
+  <meta name="description" content="찜한 부산 맛집·액티비티 모아보기" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/discover.css" />
+  <link rel="stylesheet" href="css/saved.css" />
+</head>
+<body class="saved">
+  <div class="saved-header">
+    <h1>모아보기</h1>
+    <p id="savedSub">찜한 곳 0곳</p>
+  </div>
+
+  <div class="saved-list" id="savedList"></div>
+
+  <div class="saved-empty" id="savedEmpty" style="display:none;">
+    <h2>아직 찜한 곳이 없어요</h2>
+    <p>둘러보기에서 마음에 드는 곳에 좋아요를 눌러보세요.</p>
+    <a class="btn btn--primary" href="discover.html">둘러보러 가기</a>
+  </div>
+
+  <nav class="tab-bar">
+    <a href="discover.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="12" height="16" rx="2"/><rect x="9" y="2" width="12" height="16" rx="2" fill="none"/></svg>
+      둘러보기
+    </a>
+    <a href="saved.html" class="active" id="savedTab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9Z"/></svg>
+      모아보기
+      <span class="tab-badge" id="tabBadge">0</span>
+    </a>
+  </nav>
+
+  <script src="js/places.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/saved.js"></script>
+  <script src="js/nav-badge.js"></script>
+</body>
+</html>
