@@ -4,6 +4,7 @@
 
 body.invite {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,7 +12,7 @@ body.invite {
   background:
     radial-gradient(1200px 600px at 50% -10%, rgba(20, 107, 140, 0.55), transparent 60%),
     var(--sea-deep);
-  padding: 2.5rem 1.25rem;
+  padding: calc(2.5rem + var(--safe-t)) calc(1.25rem + var(--safe-r)) calc(2.5rem + var(--safe-b)) calc(1.25rem + var(--safe-l));
 }
 
 .stage {

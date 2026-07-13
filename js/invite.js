@@ -24,6 +24,11 @@
     return Math.hypot(x - fromX, y - fromY) > 180;
   }
 
+  function safeInset(name) {
+    const v = parseFloat(getComputedStyle(document.documentElement).getPropertyValue(name));
+    return Number.isFinite(v) ? v : 0;
+  }
+
   function dodge(fromX, fromY) {
     if (locked) return;
     locked = true;
@@ -32,15 +37,21 @@
 
     const rect = cancelBtn.getBoundingClientRect();
     const margin = 24;
-    const maxX = window.innerWidth - rect.width - margin;
-    const maxY = window.innerHeight - rect.height - margin;
+    const safeTop = margin + safeInset('--safe-t');
+    const safeBottom = margin + safeInset('--safe-b') + 12;
+    const safeLeft = margin + safeInset('--safe-l');
+    const safeRight = margin + safeInset('--safe-r');
+    const minX = safeLeft;
+    const minY = safeTop;
+    const maxX = window.innerWidth - rect.width - safeRight;
+    const maxY = window.innerHeight - rect.height - safeBottom;
 
     let nextX;
     let nextY;
     let tries = 0;
     do {
-      nextX = margin + Math.random() * Math.max(0, maxX - margin);
-      nextY = margin + Math.random() * Math.max(0, maxY - margin);
+      nextX = minX + Math.random() * Math.max(0, maxX - minX);
+      nextY = minY + Math.random() * Math.max(0, maxY - minY);
       tries += 1;
     } while (!farEnough(nextX, nextY, fromX, fromY) && tries < 6);
 
