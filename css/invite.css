@@ -54,6 +54,7 @@ body.invite {
 .invite-ticket__sub {
   margin: 0.6rem 0 0;
   font-size: 0.95rem;
+  line-height: 1.5;
   color: rgba(27, 36, 48, 0.7);
 }
 
