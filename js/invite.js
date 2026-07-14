@@ -100,7 +100,7 @@
     stage.style.transform = 'scale(0.96)';
     stage.style.opacity = '0';
     window.setTimeout(() => {
-      window.location.href = 'discover.html';
+      window.location.href = 'itinerary.html';
     }, 380);
   });
 })();
