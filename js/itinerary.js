@@ -1,6 +1,4 @@
 (() => {
-  document.body.focus({ preventScroll: true });
-
   const tabButtons = Array.from(document.querySelectorAll('.tab-btn'));
   const panels = Array.from(document.querySelectorAll('.panel'));
 

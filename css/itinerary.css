@@ -5,6 +5,7 @@
 body.itinerary {
   min-height: 100vh;
   padding-bottom: calc(76px + var(--safe-b));
+  -webkit-overflow-scrolling: touch;
 }
 
 .trip-header {
